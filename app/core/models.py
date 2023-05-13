@@ -1,4 +1,5 @@
 """Database Models"""
+from django.conf import settings
 from django.db import models
 from django.contrib.auth.models import (
     AbstractBaseUser,
@@ -42,3 +43,19 @@ class User(AbstractBaseUser, PermissionsMixin):
     objects = UserManager()
 
     USERNAME_FIELD = 'email'
+
+
+class Recipe(models.Model):
+    """Recipe Entity"""
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+    )
+    title = models.CharField(max_length=50)
+    prep_time = models.IntegerField()
+    cook_time = models.IntegerField()
+    description = models.TextField(blank=True)
+    link = models.CharField(max_length=255, blank=True)
+
+    def __str__(self):
+        return self.title

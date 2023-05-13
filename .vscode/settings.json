@@ -2,5 +2,9 @@
 	"python.testing.unittestArgs": ["-v", "-s", "./app", "-p", "test*.py"],
 	"python.testing.pytestEnabled": true,
 	"python.testing.unittestEnabled": true,
-	"testExplorer.codeLens": true
+	"testExplorer.codeLens": true,
+	"[python]": {
+		"editor.defaultFormatter": "ms-python.autopep8"
+	},
+	"python.formatting.provider": "none"
 }
